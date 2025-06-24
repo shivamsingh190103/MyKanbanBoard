@@ -1,5 +1,10 @@
-# Kanban_Flow_Infosys_Internship_Oct2024
+# Kandan Board Task Mangement
 Simple Kanban Board for Task Management. Create a Kanban board for individual and team task management, allowing users to organize members into teams and manage tasks in different stages (To Do, In Progress, Review, Done) and visualize workflow.
+
+<h3>📸 Demo Screenshot</h3>
+
+<img src="./KanbanBoard.png" alt="KanbanFlow Demo" width="700" />
+
 
 # Table of Contents
 - [Introduction]
@@ -23,7 +28,7 @@ Before you begin, ensure you have the following installed on your local machine:
 
 1. **Clone the Repository**:
    
-    git clone https://github.com/SpringBoardMentor115/Kanban_Flow_Infosys_Internship_Oct2024.git
+    git clone https://github.com/shivamsingh190103/KanbanBoard.git
 
     cd kanban-flow/MyKanban
     
