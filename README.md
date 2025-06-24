@@ -4,6 +4,11 @@ Simple Kanban Board for Task Management. Create a Kanban board for individual an
 <h3>📸 Demo Screenshot</h3>
 
 <img src="./KanbanBoard.png" alt="KanbanFlow Demo" width="700" />
+<img src="/a.png" alt="KanbanFlow Demo" width="700" />
+<img src="./b.png" alt="KanbanFlow Demo" width="700" />
+<img src="./c.png" alt="KanbanFlow Demo" width="700" />
+
+<img src="./d.png" alt="KanbanFlow Demo" width="700" />
 
 
 # Table of Contents
