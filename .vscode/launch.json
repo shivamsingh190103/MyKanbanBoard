@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MyKanbanApplication<MyKanban>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.demo.MyKanbanApplication",
+            "projectName": "MyKanban",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
