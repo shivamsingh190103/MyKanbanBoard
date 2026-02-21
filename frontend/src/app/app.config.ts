@@ -2,8 +2,8 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorService } from './services/http-interceptor.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,12 +12,7 @@ export const appConfig: ApplicationConfig = {
     ),
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: class {
-        intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-          const clonedRequest = req.clone({ withCredentials: true });
-          return next.handle(clonedRequest);
-        }
-      },
+      useClass: HttpInterceptorService,
       multi: true
     },
     provideZoneChangeDetection({ eventCoalescing: true }),
