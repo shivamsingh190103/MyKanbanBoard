@@ -1,0 +1,85 @@
+<div >
+<div class="popup-form">
+    <div mat-dialog-title>
+      <h1>Edit Project</h1>
+      <button mat-icon-button (click)="onCancel()" class="close-button">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-dialog-content class="scrollable-content">
+      <form [formGroup]="updateTaskForm">
+        <!-- Project Name -->
+        <mat-form-field>
+          <mat-label>Project Name</mat-label>
+          <input matInput formControlName="name" required />
+        </mat-form-field>
+  
+        <!-- Project ID -->
+        <mat-form-field>
+          <mat-label>Project ID</mat-label>
+          <input matInput formControlName="id" readonly />
+        </mat-form-field>
+  
+        <!-- Description -->
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" required></textarea>
+        </mat-form-field>
+  
+        <!-- Start Date -->
+        <mat-form-field>
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="startPicker"
+            formControlName="startDate"
+            required
+          />
+          <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+  
+        <!-- End Date -->
+        <mat-form-field>
+          <mat-label>Expected End Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="endPicker"
+            formControlName="endDate"
+            required
+          />
+          <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
+  
+        <!-- Team Members
+        <div formArrayName="members">
+          <div
+            *ngFor="let memberControl of membersFormArray.controls; let i = index"
+            [formGroupName]="i"
+            class="member-fields"
+          >
+            <mat-form-field>
+              <mat-label>Member Email</mat-label>
+              <input matInput formControlName="email" placeholder="Email" />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>User ID</mat-label>
+              <input matInput formControlName="userId" placeholder="User ID" />
+            </mat-form-field>
+            <button mat-icon-button (click)="removeMember(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+  
+        <button mat-button color="primary" (click)="addMember()">+ Add Member</button> -->
+      </form>
+    </div>
+  
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button color="primary" (click)="onSave()">Save</button>
+    </div>
+  </div>
+</div>

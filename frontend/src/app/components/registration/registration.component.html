@@ -1,0 +1,90 @@
+<!-- Initial Registration Form -->
+<div class="form-container" *ngIf="!isOtpSent">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-form">
+    <h2>User Registration</h2>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input 
+        type="text" 
+        id="name" 
+        formControlName="name" 
+        placeholder="Enter your full name"
+        [class.error]="name?.invalid && name?.touched">
+      <div class="error-message" *ngIf="name?.invalid && name?.touched">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input 
+        type="email" 
+        id="email" 
+        formControlName="email" 
+        placeholder="Enter email"
+        [class.error]="email?.invalid && email?.touched">
+      <div class="error-message" *ngIf="email?.invalid && email?.touched">
+        <span *ngIf="email?.errors?.['required']">Email is required</span>
+        <span *ngIf="email?.errors?.['email']">Please enter a valid email</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <div class="password-input-container">
+        <input 
+          [type]="showPassword ? 'text' : 'password'" 
+          id="password" 
+          formControlName="password" 
+          placeholder="Enter password"
+          [class.error]="password?.invalid && password?.touched">
+        <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+          {{ showPassword ? '👁️' : '👁️‍🗨️' }}
+        </button>
+      </div>
+      <div class="error-message" *ngIf="password?.invalid && password?.touched">
+        <span *ngIf="password?.errors?.['required']">Password is required</span>
+        <span *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters</span>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn" [disabled]="registrationForm.invalid || isLoading">
+      {{ isLoading ? 'Processing...' : 'Register' }}
+    </button>
+  </form>
+</div>
+
+<!-- OTP Verification Form -->
+<div class="form-container" *ngIf="isOtpSent && !isVerified">
+  <form [formGroup]="otpForm" (ngSubmit)="verifyOtp()" class="otp-form">
+    <h2>OTP Verification</h2>
+    <p>Please enter the OTP sent to your email</p>
+    
+    <div class="form-group">
+      <label for="otp">Enter OTP</label>
+      <input 
+        type="text" 
+        id="otp" 
+        formControlName="otp" 
+        placeholder="Enter OTP"
+        [class.error]="otp?.invalid && otp?.touched">
+      <div class="error-message" *ngIf="otp?.invalid && otp?.touched">
+        OTP is required
+      </div>
+    </div>
+
+    <button type="submit" class="verify-btn" [disabled]="otpForm.invalid || isLoading">
+      {{ isLoading ? 'Verifying...' : 'Verify OTP' }}
+    </button>
+
+    <button type="button" class="resend-btn" (click)="resendOtp()" [disabled]="isResendDisabled || isLoading">
+      {{ resendCountdown > 0 ? 'Resend OTP in ' + resendCountdown + 's' : 'Resend OTP' }}
+    </button>
+  </form>
+</div>
+
+<div class="form-container" *ngIf="isVerified">
+  <h2>Registration Successful!</h2>
+  <p>Your account has been verified. You can now login.</p>
+</div>

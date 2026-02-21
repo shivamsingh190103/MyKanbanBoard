@@ -1,0 +1,28 @@
+<div class="app-container">
+    <app-sidebar></app-sidebar>
+    <div class="main-content">
+        <div class="profile-header">
+            <h1>{{ userProfile.name }}</h1>
+            <h4>{{ userProfile.email }}</h4>
+        </div>
+        <div class="stats-container">
+            <div class="stats-card">
+                <p>{{ userProfile.totalProjects }}</p>
+                <span>Project Teams</span>
+            </div>
+            <div class="stats-card">
+                <p>{{ userProfile.totalTasks }}</p>
+                <span>Total Tasks</span>
+            </div>
+            <div class="stats-card">
+                <p>{{ userProfile.totalActiveTasks }}</p>
+                <span>Active Tasks</span>
+            </div>
+            <div class="stats-card">
+                <p>{{ userProfile.totalDoneTasks }}</p>
+                <span>Completed Tasks</span>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

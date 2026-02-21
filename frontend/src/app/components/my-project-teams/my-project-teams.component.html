@@ -1,0 +1,50 @@
+<div class="app-container">
+  <app-sidebar></app-sidebar>
+  <div class="main-content">
+    <button class="create-project" (click)="createProject()" mat-button>+ Create Project</button>
+    <div *ngFor="let project of projects" class="project-card">
+      <div class="project-card-header">
+        <h2>{{ project.name }}</h2>
+        <div class="project-actions">
+          <button class="edit" (click)="editProject(project.id)" mat-button>Edit</button>
+          <button class="delete" (click)="onDelete(project.id)" mat-button>Delete</button>
+        </div>
+      </div>
+      <p>{{ project.description }}</p>
+      <p><strong>Admin:</strong> {{ project.adminName }}</p>
+      <p><strong>Project ID:</strong> {{ project.id }}</p>
+      <p><strong>Project start date:</strong> {{ project.startDate | date }}</p>
+      <p><strong>Project expected end date:</strong> {{ project.endDate | date }}</p>
+      <h3>Team Details</h3>
+      <div class="team-members">
+        <div class="team-member-card" *ngFor="let member of project.teamMembers">
+          <p><strong>Email:</strong> {{ member.email }}</p>
+          <button (click)="deleteMember(project.id, member.id)" mat-button>Remove Member</button>
+        </div>
+      </div>
+      <button class="add-member" (click)="addMember(project)" mat-button>+ Add Member</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Dialog for Project Delete Confirmation -->
+<div *ngIf="showDeleteModal" class="modal-overlay">
+  <div class="modal-content">
+    <p>Do you really want to delete this project?</p>
+    <div class="modal-actions">
+      <button (click)="confirmDelete()" class="yes-button">Yes</button>
+      <button (click)="cancelDelete()" class="no-button">No</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Dialog for Member Delete Confirmation -->
+<div *ngIf="showDeleteMemberModal" class="modal-overlay">
+  <div class="modal-content">
+    <p>Do you really want to delete this team member?</p>
+    <div class="modal-actions">
+      <button (click)="confirmDeleteMember()" class="yes-button">Yes</button>
+      <button (click)="cancelDeleteMember()" class="no-button">No</button>
+    </div>
+  </div>
+</div>
